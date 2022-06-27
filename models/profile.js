@@ -1,16 +1,17 @@
 import mongoose from 'mongoose'
-import { Routine } from '../models/routine.js'
+
+const Schema = mongoose.Schema
 
 const recordSchema = new mongoose.Schema({
   name: String,
   date: {
-      type: Date,
+    type: Date,
       default: function () {
-          const today = new Date()
-          const oneYear = today.getFullYear() + 1
-          today.setFullYear(oneYear)
-          return today
-        }
+        const today = new Date()
+        const oneYear = today.getFullYear() + 1
+        today.setFullYear(oneYear)
+        return today
+      }
   }
 })
 
@@ -18,8 +19,8 @@ const recordSchema = new mongoose.Schema({
 const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
-  records: recordSchema,
-  routine: [{type: Schema.Types.ObjectId, ref: 'Routine'}]
+  records: [recordSchema],
+  routines: {type: Schema.Types.ObjectId, ref: 'Routine'}
 }, {
   timestamps: true
 })
