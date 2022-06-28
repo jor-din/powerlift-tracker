@@ -1,5 +1,4 @@
 import { Profile } from "../models/profile.js";
-import { Routine } from "../models/routine.js";
 
 
 function show(req, res){

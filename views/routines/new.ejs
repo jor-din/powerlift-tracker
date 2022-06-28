@@ -2,17 +2,25 @@
 <%- include('../partials/nav') %>
 <main>
     <h1><%= title %></h1>
+    <a href="/profiles/<%= user.profile._id %>">Back To Profile</a>
     <ul>
         <% routines.forEach(routine => { %>
-         <li>
-            <%= routine.name %> 
-         </li> 
+            <%= routine.name %>
+            <form action="/routines/<%= routine._id %>/sets " method="POST">
+                <input type="number" name="reps" id="reps-input"> x <input type="number" name="weight" id="weight-input">
+                <button type="submit">Add Set</button>
+            </form>
+            <% if (routine.sets.length) { %>
+                <ul><%= routine.reps %> x <%= routine.weight %></ul>
+            <% } %>
         <% }) %>
     </ul>
     <form id ="add-workout-form" action="/routines" method="POST">
-        <input type="text" name="name" id="">
+        <input type="text" name="name" id="exercise-input" required>
         <button type="submit">Add Workout</button>
     </form>
+    
+
 
 </main>
 

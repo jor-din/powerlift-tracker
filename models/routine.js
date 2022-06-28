@@ -2,10 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema
 
-const routineSchema = new Schema ({
-    name:{
-        type: String,
-    }, 
+const setSchema = new Schema ({
     reps:{
         type: Number,
         min: 0
@@ -13,12 +10,13 @@ const routineSchema = new Schema ({
     weight: {
         type: Number,
         min: 0
-    },
-    ROM: {
-        type: Number,
-        min: 0,
-        max: 10
     }
+})
+const routineSchema = new Schema ({
+    name:{
+        type: String,
+    },
+    sets: [setSchema]
 }, {
     timestamps: true
 })
