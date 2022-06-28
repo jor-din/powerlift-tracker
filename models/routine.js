@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const routineSchema = new Schema ({
-    name: String, 
+    name:{
+        type: String,
+    }, 
     reps:{
         type: Number,
         min: 0
@@ -12,11 +14,11 @@ const routineSchema = new Schema ({
         type: Number,
         min: 0
     },
-    rpe: {
+    ROM: {
         type: Number,
         min: 0,
         max: 10
-    },
+    }
 }, {
     timestamps: true
 })

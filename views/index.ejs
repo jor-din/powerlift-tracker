@@ -3,7 +3,8 @@
 
 <main>
   <h1>BE UNSTOPPABLE</h1>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>Welcome Back, <%= user ? user.profile.name : "friend" %></h1>
+  <button><a href="<%= "profiles/index" %>"></a></button>
   <% if (user) { %>
     <a href="/auth/logout">
       <button type="submit">Logout</button>
