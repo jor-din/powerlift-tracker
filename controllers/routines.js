@@ -21,13 +21,13 @@ function create(req, res){
 }
 
 function deleteRoutine(req, res){
-    Routine.deleteById(req.params.id)
+    Routine.findByIdAndDelete(req.params.id)
     .then(routine => {
-        res.redirect('/routine/new')
+        res.redirect('/routines/new')
     })
     .catch(err => {
         console.log(err)
-        res.redirect('/routine/new')
+        res.redirect('/routines/new')
     })
 }
 

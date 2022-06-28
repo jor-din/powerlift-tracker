@@ -6,6 +6,12 @@
     <ul>
         <% routines.forEach(routine => { %>
             <%= routine.name %>
+            <form 
+                action="/routines/<%= routine._id %>?_method=Delete"
+                class="delete-form"
+                method="POST"
+                ><button type="submit">X</button>
+            </form>
             <form action="/routines/<%= routine._id %>/sets " method="POST">
                 <input type="number" name="reps" placeholder="Reps" id="reps-input"> <input type="number" name="weight" placeholder="Weight" id="weight-input">
                 <button type="submit">Add Set</button>
