@@ -4,23 +4,17 @@ import { Profile } from "../models/profile.js";
 function show(req, res){
     Profile.findById(req.params.id)
     .then(profile => {
+        const isSelf = profile._id.equals(req.user.profile._id)
         res.render("profiles/show", {
             profile,
-            title: 'Profile'
+            title: 'Profile',
+            isSelf
         })
        
     })
 }
 
-// function sessionIndex(req, res){
-//     Profile.find({})
-//     .then(routines => {
-//         res.render('routines/index', {
-//             title: 'All Workouts',
-//             routines
-//         })
-//     })
-// }
+
 //Create new workout
 function newSession(req, res){
     Profile.findById(req.user.profile)
@@ -64,32 +58,34 @@ function deleteSession(req, res){
 }
 
 function createSet(req, res){
-    Routine.findById(req.params.id)
-    .then(routine => {
-        routine.sets.push(req.body)
-        routine.save()
+    Profile.findById(req.user.profile)
+    .then(profile => {
+        let currSession = profile.sessions.id(req.params.sessionId)
+        currSession.sets.push(req.body)
+        profile.save()
         .then(() => {
-            res.redirect('/routines/new')
+            res.redirect(`/profile/${req.user.profile._id}/session/new`)
         })
     })
     .catch(err => {
         console.log(err)
-        res.redirect('/routines/new')
+        res.redirect(`/profile/${req.user.profile._id}/session/new`)
     })
 }
 
 function deleteSet(req, res){
-    Routine.findById(req.params.routineId)
-    .then(routine => {
-        routine.sets.remove({_id:req.params.setId})
-        routine.save()
+    Profile.findById(req.user.profile)
+    .then(profile => {
+        let currSession = profile.sessions.id(req.params.sessionId)
+        currSession.sets.remove({_id:req.params.setId})
+        profile.save()
         .then(() => {
-            res.redirect('/routines/new')
+            res.redirect(`/profile/${req.user.profile._id}/session/new`)
         })
     })
     .catch(err => {
         console.log(err)
-        res.redirect('/routines/new')
+        res.redirect(`/profile/${req.user.profile._id}/session/new`)
     })
 }
 

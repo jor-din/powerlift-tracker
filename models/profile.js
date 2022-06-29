@@ -15,7 +15,10 @@ const recordSchema = new mongoose.Schema({
   }
 })
 
-const setSchema = new Schema ({
+const exerciseSchema = new Schema ({
+  name:{
+    type: String,
+},
   reps:{
       type: Number,
       min: 0
@@ -30,7 +33,7 @@ const sessionSchema = new Schema ({
   name:{
       type: String,
   },
-  sets: [setSchema]
+  exercises: [exerciseSchema]
 }, {
   timestamps: true
 })

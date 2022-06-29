@@ -8,8 +8,8 @@ router.get('/:id', isLoggedIn, profilesCtrl.show)
 router.get('/:id/session/new', isLoggedIn, profilesCtrl.new)
 router.post('/session', isLoggedIn, profilesCtrl.createSession)
 router.delete('/session/:sessionId', isLoggedIn, profilesCtrl.delete)
-router.post('/session/:id/sets', isLoggedIn, profilesCtrl.createSet)
-router.delete('/:id/session/:sessionId/sets/:setId', isLoggedIn, profilesCtrl.deleteSet)
+router.post('/session/:sessionId/sets', isLoggedIn, profilesCtrl.createSet)
+router.delete('/session/:sessionId/sets/:setId', isLoggedIn, profilesCtrl.deleteSet)
 
 
 

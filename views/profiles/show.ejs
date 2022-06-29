@@ -1,11 +1,45 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="stylesheets/style.css">
 <%- include('../partials/nav') %>
 <main>
-    <h1><%= profile.name %></h1>
-    <a href="/profile/<%= profile._id %>/session/new">Add Workout</a>
-    <a href="/routines/show">View All Workout</a>
+    <h1><%= title %></h1> 
+    <form id ="add-session" action="/profile/session/" method="POST">
+        <button type="submit">Add Workout Session</button>
+    </form>
+    <ul>    
+        <% sessions.forEach(session => { %>
+            <a href="/profile/sessions/<%= session._id %>"><%= session.name %></a>
+            <form id ="add-exercise" action="/profile/session/<%= session._id %>/sets" method="POST">
+                <input type="text" name="exercise" id="exercise-input" placeholder="Exercise" required>
+                <button type="submit">Add Exercise</button>
+            </form>
+            <form 
+                action="/profile/session/<%= session._id %>?_method=Delete"
+                class="delete-form"
+                method="POST"
+                ><button type="submit">X</button>
+            </form>
+           <ul>
+            <form action="/profile/session/<%= session._id %>/sets" method="POST">
+                <input type="number" name="reps" placeholder="Reps" id="reps-input" required> <input type="number" name="weight" placeholder="Weight" id="weight-input" required>
+                <button type="submit">Add Set</button>
+            </form>
+            <% if (session.sets.length) { %>
+                <% session.sets.forEach(set => { %>
+                    <li><%= set.reps %> x <%= set.weight %></li>
+                <form 
+                action="/profile/session/<%= session._id %>/sets/<%= set._id %>?_method=Delete"
+                class="delete-form"
+                method="POST"
+                ><button type="submit">X</button>
+            </form>
+           </ul>
+                <% }) %>
+            <% } %>
+        <% }) %>
+    </ul>
 
-
+   
 </main>
 
 <%- include('../partials/footer') %>
