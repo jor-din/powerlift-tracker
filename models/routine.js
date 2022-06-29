@@ -12,6 +12,7 @@ const setSchema = new Schema ({
         min: 0
     }
 })
+
 const routineSchema = new Schema ({
     name:{
         type: String,

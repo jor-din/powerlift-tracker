@@ -15,12 +15,31 @@ const recordSchema = new mongoose.Schema({
   }
 })
 
+const setSchema = new Schema ({
+  reps:{
+      type: Number,
+      min: 0
+  },
+  weight: {
+      type: Number,
+      min: 0
+  }
+})
+
+const sessionSchema = new Schema ({
+  name:{
+      type: String,
+  },
+  sets: [setSchema]
+}, {
+  timestamps: true
+})
 
 const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
   records: [recordSchema],
-  routines: {type: Schema.Types.ObjectId, ref: 'Routine'}
+  sessions: [sessionSchema]
 }, {
   timestamps: true
 })
