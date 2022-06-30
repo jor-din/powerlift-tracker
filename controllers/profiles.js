@@ -62,11 +62,11 @@ function deleteSession(req, res){
         profile.sessions.remove({_id:req.params.sessionId})
         profile.save()
         .then(() => {
-            res.redirect(`/profile/${req.user.profile._id}/session/new`)
+            res.redirect(`/profile/${req.user.profile._id}`)
     })
     .catch(err => {
         console.log(err)
-        res.redirect(`/profile/${req.user.profile._id}/session/new`)
+        res.redirect(`/profile/${req.user.profile._id}`)
     })
 })
 }

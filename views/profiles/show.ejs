@@ -10,13 +10,13 @@
                 <% if (currentSession.exercises.length) { %>
                     <% currentSession.exercises.forEach(exercise => { %>
                         <h3><%= exercise.name %></h3>
-                        <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>?_method=Delete"  
+                        <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>?_method=DELETE"  
                             method="POST">
                             <button type="submit">Delete</button>
                         </form>
                         <% exercise.sets.forEach(set => { %>
                             <li><%= set.reps %> - <%= set.weight %>
-                            <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=Delete"  
+                            <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=DELETE"  
                                 method="POST">
                                 <button type="submit">Delete</button>
                             </form>
@@ -32,18 +32,24 @@
                 <% } else { %>
                     <h3>No Exercises Yet</h3>
                 <% } %>
-                <form action="/profile/sessions/<%= currentSession._id %>/exercises" method="POST">
+                <form id="add-exercise" action="/profile/sessions/<%= currentSession._id %>/exercises" method="POST">
                     <input type="text" name="name" required>
                     <button type="submit">Add Exercise</button>
                 </form>
-                <form action="/profile/sessions/<%= currentSession._id %>?_method=PATCH" method="POST">
-                    <button type="submit">Finished</button>
+                <form id="finished-form" action="/profile/sessions/<%= currentSession._id %>?_method=PATCH" method="POST">
+                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                      </svg></button>
                 </form>
             </section>
             <% } else { %>
             <form id ="add-session" action="/profile/sessions/" method="POST">
-                <input type="text" name="name" required>
-                <button type="submit">Add Workout Session</button>
+                <input type="text" name="name" placeholder="Name of Session" required>
+                <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg></button>
             </form> 
         <% } %>
     <% } %> 
