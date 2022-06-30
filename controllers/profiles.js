@@ -16,20 +16,6 @@ function show(req, res){
     })
 }
 
-function showSession(req, res){
-    Profile.findById(req.user.profile)
-    .then(profile => {
-        const session = profile.sessions.id(req.params.sessionId)
-        const exercise = session.exercises.id(req.params.exerciseId)
-        res.render("profiles/sessions/show", {
-            profile,
-            session,
-            exercise,
-            title: "Session"
-        })
-
-    })
-}
 
 function finished(req, res){
     Profile.findById(req.user.profile)
@@ -40,7 +26,7 @@ function finished(req, res){
         .then(() => {
             res.redirect(`/profile/${req.user.profile._id}`)
         })
-
+        
     })
 }
 
@@ -71,10 +57,26 @@ function createSession(req, res){
     })
 }
 
+function showSession(req, res){
+    Profile.findById(req.user.profile)
+    .then(profile => {
+        const session = profile.sessions.id(req.params.sessionId)
+        const exercise = session.exercises.id(req.params.exerciseId)
+        res.render("profiles/sessions/show", {
+            profile,
+            session,
+            exercise,
+            title: "Session"
+        })
+
+    })
+}
+
 function deleteSession(req, res){
     Profile.findById(req.user.profile)
     .then(profile => {
-        profile.sessions.remove({_id:req.params.sessionId})
+        const session = profile.sessions.id(req.params.sessionId)
+        session.remove(req.param.sessionId)
         profile.save()
         .then(() => {
             res.redirect(`/profile/${req.user.profile._id}`)
@@ -116,9 +118,9 @@ function deleteSet(req, res){
 
 export{
     show,
-    showSession,
-    createSession,
     createExercise,
+    createSession,
+    showSession,
     deleteSession as delete,
     finished,
     createSet,

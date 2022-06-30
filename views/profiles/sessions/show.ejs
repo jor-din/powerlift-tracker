@@ -2,7 +2,10 @@
 <%- include('../../partials/nav') %>
 
 <main>
-    <h1><%= session._id %></h1>
+    <h1><%= session.name %> </h1>
+    <form action="/profile/sessions/<%= session._id %>?_method=DELETE"
+        method="POST"><button>Delete Record</button>
+    </form>
     <% session.exercises.forEach(exercise => { %>
         <h3><%= exercise.name %></h3>
         <% exercise.sets.forEach(set => { %>
@@ -10,5 +13,9 @@
             </li>
         <% }) %> 
     <% })%> 
+    <a href="/profile/<%= profile._id %> ">
+        <button>Return</button>
+    </a>
+
 </main>
 <%- include('../../partials/footer') %>

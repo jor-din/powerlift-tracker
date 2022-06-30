@@ -18,7 +18,7 @@
                         </form>
                         <% exercise.sets.forEach(set => { %>
                             <li><%= set.reps %> x <%= set.weight %>
-                            <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=DELETE"  
+                            <form id="delete-exercise-btn" action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=DELETE"  
                                 method="POST">
                                 <button class ="delete-btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
@@ -27,7 +27,7 @@
                             </li>
                             
                         <% }) %>
-                        <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets" method="POST">
+                        <form id="add-set-btn" action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets" method="POST">
                             <input type="number" name="reps" placeholder="reps">
                             <input type="number" name="weight" placeholder="weight">
                             <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
