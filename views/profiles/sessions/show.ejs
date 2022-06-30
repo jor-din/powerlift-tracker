@@ -3,6 +3,12 @@
 
 <main>
     <h1><%= session._id %></h1>
-    
+    <% session.exercises.forEach(exercise => { %>
+        <h3><%= exercise.name %></h3>
+        <% exercise.sets.forEach(set => { %>
+            <li><%= set.reps %> x <%= set.weight %>
+            </li>
+        <% }) %> 
+    <% })%> 
 </main>
 <%- include('../../partials/footer') %>

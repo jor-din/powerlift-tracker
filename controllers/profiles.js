@@ -20,16 +20,16 @@ function showSession(req, res){
     Profile.findById(req.user.profile)
     .then(profile => {
         const session = profile.sessions.id(req.params.sessionId)
+        const exercise = session.exercises.id(req.params.exerciseId)
         res.render("profiles/sessions/show", {
             profile,
-            session:profile.sessions[profile.sessions.length-1],
-            title: 'Track me Here'
+            session,
+            exercise,
+            title: "Session"
         })
 
     })
 }
-
-
 
 function finished(req, res){
     Profile.findById(req.user.profile)
