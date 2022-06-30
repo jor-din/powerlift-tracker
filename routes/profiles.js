@@ -5,12 +5,11 @@ import * as profilesCtrl from '../controllers/profiles.js'
 const router = Router()
 
 router.get('/:id', isLoggedIn, profilesCtrl.show)
-router.get('/:id/session/new', isLoggedIn, profilesCtrl.new)
-router.post('/session', isLoggedIn, profilesCtrl.createSession)
-router.delete('/session/:sessionId', isLoggedIn, profilesCtrl.delete)
-router.post('/session/:sessionId/sets', isLoggedIn, profilesCtrl.createSet)
-router.delete('/session/:sessionId/sets/:setId', isLoggedIn, profilesCtrl.deleteSet)
-
+router.post('/sessions', isLoggedIn, profilesCtrl.createSession)
+router.post('/sessions/:sessionId/exercises', isLoggedIn, profilesCtrl.createExercise)
+router.post('/sessions/:sessionId/exercises/:exerciseId/sets', isLoggedIn, profilesCtrl.createSet)
+router.delete('/sessions/:sessionId/exerciseId', isLoggedIn, profilesCtrl.delete)
+router.delete('/sessions/:sessionId/exercises/:exerciseId/sets/:setId', isLoggedIn, profilesCtrl.deleteSet)
 
 
 

@@ -8,34 +8,33 @@ function show(req, res){
         res.render("profiles/show", {
             profile,
             title: 'Profile',
-            isSelf
+            isSelf,
+            currentSession: profile.sessions[profile.sessions.length-1]
         })
-       
     })
 }
 
 
-//Create new workout
-function newSession(req, res){
+function createExercise(req, res){
     Profile.findById(req.user.profile)
-    .then( profile => {
-        res.render('profiles/sessions/new', {
-            title: 'Add',
-            sessions: profile.sessions
+    .then(profile => {
+        const session = profile.sessions.id(req.params.sessionId)
+        session.exercises.push(req.body)
+        profile.save()
+        .then(() => {
+            res.redirect(`/profile/${req.user.profile._id}`)
         })
     })
 }
+
 
 function createSession(req, res){
-    for (let key in req.body) {
-        if (req.body[key] === '') delete req.body[key]
-    }
     Profile.findById(req.user.profile)
     .then(profile => {
         console.log(profile)
         profile.sessions.push(req.body)
         profile.save()
-        res.redirect(`/profile/${req.user.profile._id}/session/new`)
+        res.redirect(`/profile/${req.user.profile._id}`)
     })
     .catch(err => {
         console.log(err)
@@ -60,41 +59,36 @@ function deleteSession(req, res){
 function createSet(req, res){
     Profile.findById(req.user.profile)
     .then(profile => {
-        let currSession = profile.sessions.id(req.params.sessionId)
-        currSession.sets.push(req.body)
+        const session = profile.sessions.id(req.params.sessionId)
+        const exercise = session.exercises.id(req.params.exerciseId)
+        exercise.sets.push(req.body)
         profile.save()
         .then(() => {
-            res.redirect(`/profile/${req.user.profile._id}/session/new`)
+            res.redirect(`/profile/${req.user.profile._id}`)
         })
     })
-    .catch(err => {
-        console.log(err)
-        res.redirect(`/profile/${req.user.profile._id}/session/new`)
-    })
 }
+    
 
 function deleteSet(req, res){
     Profile.findById(req.user.profile)
     .then(profile => {
-        let currSession = profile.sessions.id(req.params.sessionId)
-        currSession.sets.remove({_id:req.params.setId})
+        const session = profile.sessions.id(req.params.sessionId)
+        const exercise = session.exercises.id(req.params.exerciseId)
+        exercise.sets.remove(req.params.setId)
         profile.save()
         .then(() => {
-            res.redirect(`/profile/${req.user.profile._id}/session/new`)
+            res.redirect(`/profile/${req.user.profile._id}`)
         })
-    })
-    .catch(err => {
-        console.log(err)
-        res.redirect(`/profile/${req.user.profile._id}/session/new`)
     })
 }
 
+
 export{
     show,
-    // sessionIndex,
-    newSession as new,
     createSession,
+    createExercise,
     deleteSession as delete,
     createSet,
-    deleteSet
+    deleteSet,
 }
