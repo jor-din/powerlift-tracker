@@ -11,7 +11,7 @@ function show(req, res){
             profile,
             title: "Today's Workout",
             isSelf,
-            currentSession: profile.sessions[profile.sessions.length]
+            currentSession: profile.sessions[profile.sessions.length-1]
         })
     })
 }

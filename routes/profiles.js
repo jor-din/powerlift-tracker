@@ -5,7 +5,7 @@ import * as profilesCtrl from '../controllers/profiles.js'
 const router = Router()
 
 router.get('/:id', isLoggedIn, profilesCtrl.show)
-router.get ('/sessions/:sessionId', isLoggedIn, profilesCtrl.showSession)
+// router.get ('/sessions/:sessionId', isLoggedIn, profilesCtrl.showSession)
 router.post('/sessions', isLoggedIn, profilesCtrl.createSession)
 router.post('/sessions/:sessionId/exercises', isLoggedIn, profilesCtrl.createExercise)
 router.post('/sessions/:sessionId/exercises/:exerciseId/sets', isLoggedIn, profilesCtrl.createSet)
