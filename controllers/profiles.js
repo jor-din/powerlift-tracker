@@ -11,10 +11,25 @@ function show(req, res){
             profile,
             title: "Today's Workout",
             isSelf,
-            currentSession: profile.sessions[profile.sessions.length-1]
+            currentSession: profile.sessions[profile.sessions.length]
         })
     })
 }
+
+function showSession(req, res){
+    Profile.findById(req.user.profile)
+    .then(profile => {
+        const session = profile.sessions.id(req.params.sessionId)
+        res.render("profiles/sessions/show", {
+            profile,
+            session:profile.sessions[profile.sessions.length-1],
+            title: 'Track me Here'
+        })
+
+    })
+}
+
+
 
 function finished(req, res){
     Profile.findById(req.user.profile)
@@ -101,6 +116,7 @@ function deleteSet(req, res){
 
 export{
     show,
+    showSession,
     createSession,
     createExercise,
     deleteSession as delete,

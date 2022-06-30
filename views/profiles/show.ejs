@@ -6,21 +6,21 @@
     <% if (isSelf) { %> 
         <% if (!currentSession?.isFinished && currentSession) { %>
             <section>
-                <h2><%= currentSession.name %></h2>
+                <h3><%= currentSession.name %></h3>
                 <% if (currentSession.exercises.length) { %>
                     <% currentSession.exercises.forEach(exercise => { %>
                         <h3><%= exercise.name %></h3>
                         <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>?_method=DELETE"  
                             method="POST">
-                            <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <button class="delete-btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                               </svg></button>
                         </form>
                         <% exercise.sets.forEach(set => { %>
-                            <li><%= set.reps %> - <%= set.weight %>
+                            <li><%= set.reps %> x <%= set.weight %>
                             <form action="/profile/sessions/<%= currentSession._id %>/exercises/<%= exercise._id %>/sets/<%= set._id %>?_method=DELETE"  
                                 method="POST">
-                                <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <button class ="delete-btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                   </svg></button>
                             </form>
@@ -37,14 +37,14 @@
                         </form>
                     <% }) %>
                 <% } else { %>
-                    <h3>No Exercises Yet</h3>
+                    <h4>No Exercises Yet</h4>
                 <% } %>
                 <form id="add-exercise" action="/profile/sessions/<%= currentSession._id %>/exercises" method="POST">
-                    <input type="text" name="name" required>
-                    <button type="submit">Add Exercise</button>
+                    <input type="text" name="name" placeholder = "Add Exercise" required>
+                    <button type="submit">Add</button>
                 </form>
                 <form id="finished-form" action="/profile/sessions/<%= currentSession._id %>?_method=PATCH" method="POST">
-                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <button id="finished-btn" type="submit" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
                         <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
                         <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
                       </svg></button>
@@ -62,12 +62,9 @@
     <% } %> 
     <section id="session-records">
         <% profile.sessions.forEach(session => { %>
-            <a href="/profile/sessions/<%= session._id %>/show"><%= session.name %></a>
+            <a href="/profile/sessions/<%= session._id %>"><%= session.name %></a>
         <% }) %>
     </section>
-
-
-   
 </main>
 
 <%- include('../partials/footer') %>

@@ -1,11 +1,10 @@
 <%- include('./partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/siwg.css">
 
 <main>
   <h1>BE UNSTOPPABLE</h1>
   <h1>Welcome Back, <%= user ? user.profile.name : "friend" %></h1>
   <% if (user) { %>
-    <a href="/profile/<%= user.profile._id %>"><button>Home Page</button></a>
     <a href="/auth/logout">
       <button type="submit">Logout</button>
     </a>
