@@ -2,8 +2,10 @@ import { Profile } from "../models/profile.js";
 
 
 function show(req, res){
-    Profile.findById(req.params.id)
+    console.log(req.user.profile)
+    Profile.findById(req.user.profile._id)
     .then(profile => {
+        console.log(profile)
         const isSelf = profile._id.equals(req.user.profile._id)
         res.render("profiles/show", {
             profile,
@@ -11,6 +13,19 @@ function show(req, res){
             isSelf,
             currentSession: profile.sessions[profile.sessions.length-1]
         })
+    })
+}
+
+function finished(req, res){
+    Profile.findById(req.user.profile)
+    .then(profile => {
+        const session = profile.sessions.id(req.params.sessionId)
+        session.isFinished = true
+        profile.save()
+        .then(() => {
+            res.redirect(`/profile/${req.user.profile._id}`)
+        })
+
     })
 }
 
@@ -89,6 +104,7 @@ export{
     createSession,
     createExercise,
     deleteSession as delete,
+    finished,
     createSet,
     deleteSet,
 }

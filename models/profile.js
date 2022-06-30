@@ -25,7 +25,7 @@ const sessionSchema = new Schema ({
       type: String,
   },
   exercises: [exerciseSchema],
-  isFinished: Boolean
+  isFinished: {type: Boolean, default: false}
 }, {
   timestamps: true
 })

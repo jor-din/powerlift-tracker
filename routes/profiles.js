@@ -10,6 +10,7 @@ router.post('/sessions/:sessionId/exercises', isLoggedIn, profilesCtrl.createExe
 router.post('/sessions/:sessionId/exercises/:exerciseId/sets', isLoggedIn, profilesCtrl.createSet)
 router.delete('/sessions/:sessionId/exerciseId', isLoggedIn, profilesCtrl.delete)
 router.delete('/sessions/:sessionId/exercises/:exerciseId/sets/:setId', isLoggedIn, profilesCtrl.deleteSet)
+router.patch('/sessions/:sessionId', isLoggedIn, profilesCtrl.finished)
 
 
 

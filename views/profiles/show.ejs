@@ -4,8 +4,7 @@
 <main>
     <h1><%= title %></h1> 
     <% if (isSelf) { %> 
-
-        <% if (!currentSession.isFinished) { %>
+        <% if (!currentSession?.isFinished && currentSession) { %>
             <section>
                 <h2><%= currentSession.name %></h2>
                 <% if (currentSession.exercises.length) { %>
@@ -37,9 +36,11 @@
                     <input type="text" name="name" required>
                     <button type="submit">Add Exercise</button>
                 </form>
-                <form action="/profile/sessions/<%= session._id %>"></form>
+                <form action="/profile/sessions/<%= currentSession._id %>?_method=PATCH" method="POST">
+                    <button type="submit">Finished</button>
+                </form>
             </section>
-        <% } else { %>
+            <% } else { %>
             <form id ="add-session" action="/profile/sessions/" method="POST">
                 <input type="text" name="name" required>
                 <button type="submit">Add Workout Session</button>
@@ -48,7 +49,7 @@
     <% } %> 
     <section>
         <% profile.sessions.forEach(session => { %>
-            <a href="/profile/sessions/<%= session._id %>"><%= session.name %></a>
+            <a href="/profile/sessions/<%= session._id %>/show"><%= session.name %></a>
         <% }) %>
     </section>
 
