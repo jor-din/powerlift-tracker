@@ -9,7 +9,7 @@ function show(req, res){
         const isSelf = profile._id.equals(req.user.profile._id)
         res.render("profiles/show", {
             profile,
-            title: 'Profile',
+            title: "Today's Workout",
             isSelf,
             currentSession: profile.sessions[profile.sessions.length-1]
         })

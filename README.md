@@ -1,12 +1,12 @@
 # Workout Tracker
 #### This is a workout trackers designed for users who are passionate about powerlifting and tracking their progression.
 ## Planning Materials
-[Trello](https://trello.com/b/m52YIqGs/portfolio)
-[Whimsical](https://whimsical.com/jordin-huang-portfolio-N9jhST83eGwFExJoYdApP6)
+[Trello](https://trello.com/b/wLI3fR6T/powerlifting-tracker )
+[Whimsical](https://whimsical.com/powerlift-tracker-Beg1mePZjsTMzR7s53ERXW)
 
 ## Main Page
 ![main-page-screen](https://user-images.githubusercontent.com/87043491/173003609-bea87155-79c2-4671-aae7-21633c64edab.png)
-[Portflio Link](https://jordinhuang.netlify.app/)
+[Project Link](https://powerlift-tracker.herokuapp.com/)
 
 ## 👩🏻‍💻Technology Used 
 - CSS
