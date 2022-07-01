@@ -32,7 +32,12 @@ nav {
   padding: 5px;
 }
 
+img{
+  height: 50px;
+}
+
 nav > h2 {
+  font-family: 'Alfa Slab One', cursive;
   margin-right: 10px;
   font-size: 20px;
 }
@@ -42,13 +47,11 @@ main {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  flex-grow: 1;
   height: 94vh;
 }
 
 
-h3{
-  color: #CFD5e5;
-}
 form {
   display: block;
   padding: 15px;
@@ -60,6 +63,9 @@ button {
   color: #6236ff;
 }
 
+#log-out {
+  color: #ff5970;
+}
 .delete-btn {
   display: flex;
   align-items: flex-end;
@@ -72,7 +78,8 @@ button {
 }
 
 #workout-form h2 {
-  color: #8f9bbc;
+  text-align: center;
+  color: #fdfdfd;
   padding: 10px;
 }
 
@@ -92,6 +99,10 @@ button {
   align-items: center;
 }
 
+#session-form h2 {
+  color: #fdfdfd;
+}
+
 #sets-name{
   color: #fdfdfd;
   font-size: 15px;
@@ -105,13 +116,14 @@ button {
   background-color: #2a324f;
 }
 
-#session-records h2 {
+#session-records h3 {
+  color: #8f9bbc;
   padding: 5%;
   text-align: center;
 }
 #session-records li {
   list-style: none;
-  order: -1;
+  font-size: 15px;
 }
 
 #session-records a {
@@ -120,3 +132,10 @@ button {
   display: block;
   line-height: 20px;
 }
+
+input{
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+}
+

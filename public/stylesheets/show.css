@@ -1,0 +1,27 @@
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#top-div{
+    /* background-color: aquamarine; */
+    justify-content: space-evenly;
+    align-items: baseline;
+
+}
+
+#top-div h1{
+    text-align: center;
+}
+
+#record {
+    /* background-color: brown; */
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+ul {
+    list-style: none;
+}
