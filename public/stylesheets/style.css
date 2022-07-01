@@ -57,6 +57,7 @@ form {
 
 button {
   all: unset;
+  color: #6236ff;
 }
 
 .delete-btn {
@@ -66,7 +67,7 @@ button {
 
 #workout-form {
   background-color: #242b44;
-  color: #ff5970;
+  color: #fdfdfd;
   width: 80vw;
 }
 
@@ -76,7 +77,6 @@ button {
 }
 
 #adding-workout{
-  background-color: #fdfdfd;
   text-align: center;
 }
 
@@ -93,7 +93,7 @@ button {
 }
 
 #sets-name{
-  color: blue;
+  color: #fdfdfd;
   font-size: 15px;
   display: flex;
   align-items: center;
