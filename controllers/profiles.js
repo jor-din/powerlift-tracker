@@ -44,6 +44,20 @@ function createExercise(req, res){
 }
 
 
+function deleteExercise(req, res){
+    Profile.findById(req.user.profile)
+    .then(profile => {
+        const session = profile.sessions.id(req.params.sessionId)
+        session.exercises.remove(req.params.exerciseId)
+        profile.save()
+        .then(() => {
+            res.redirect(`/profile/${req.user.profile._id}`)
+        })
+    })
+}
+
+
+
 function createSession(req, res){
     Profile.findById(req.user.profile)
     .then(profile => {
@@ -119,6 +133,7 @@ function deleteSet(req, res){
 export{
     show,
     createExercise,
+    deleteExercise,
     createSession,
     showSession,
     deleteSession as delete,

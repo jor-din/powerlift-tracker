@@ -1,3 +1,10 @@
+body {
+  background-image: url('https://images.unsplash.com/photo-1521805103424-d8f8430e8933?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Alfa Slab One', cursive;
+  color: #fffffe;
+}
 .siwg {
   background: url(/images/auth/google/siwg_light_normal.png);
   cursor: pointer;
@@ -42,6 +49,29 @@
   width: 1px;
 }
 
-main {
-  
+button {
+  all: unset;
+}
+
+svg {
+  padding: 25px;
+  color: #fffffe;
+}
+
+h1 {
+  font-size: 90px;
+  letter-spacing: 5px;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin-top: 10%;
 }

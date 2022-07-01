@@ -17,57 +17,106 @@ html {
 }
 
 body {
-  background-color: #fffffe;
+  background-color: #242b44;
   /* Use a system font, if none are available use an available sans-sarif font */
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Oswald', sans-serif;
   margin: 0;
-  color: #232323;
+  color: #fdfdfd;
 }
 
 nav {
-  background-color: #f45d48;
+  background-color: #22273d;
   font-size: 1.6rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 5px;
 }
 
-nav > a {
-  display: flex;
-  align-items: center;
+nav > h2 {
   margin-right: 10px;
+  font-size: 20px;
 }
 
-.profile-avatar {
-  height: 25px;
-  width: 25px;
-}
+
 main {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  height: 94vh;
 }
 
-h1 {
-  font-size: 3.6rem;
-  padding: 10px;
-}
 
+h3{
+  color: #CFD5e5;
+}
 form {
-  display: flexbox;
+  display: block;
+  padding: 15px;
 }
 
-li {
-  display: inline-flex;
-  flex-direction: row;
+
+button {
+  all: unset;
 }
 
 .delete-btn {
-  background-color: aquamarine;
   display: flex;
   align-items: flex-end;
 }
 
-section > a {
+#workout-form {
+  background-color: #242b44;
+  color: #ff5970;
+  width: 80vw;
+}
 
+#workout-form h2 {
+  color: #8f9bbc;
+  padding: 10px;
+}
+
+#adding-workout{
+  background-color: #fdfdfd;
+  text-align: center;
+}
+
+#exercise-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#session-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sets-name{
+  color: blue;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#session-records {
+  width: 20vw;
+  background-color: #2a324f;
+}
+
+#session-records h2 {
+  padding: 5%;
+  text-align: center;
+}
+#session-records li {
+  list-style: none;
+  order: -1;
+}
+
+#session-records a {
+  color: #fdfdfd;
+  text-decoration: none;
+  display: block;
+  line-height: 20px;
 }

@@ -12,6 +12,8 @@ router.get('/sessions/:sessionId', isLoggedIn, profilesCtrl.showSession)
 
 router.delete('/sessions/:sessionId', isLoggedIn, profilesCtrl.delete)
 
+router.delete('/sessions/:sessionId/exercises/:exerciseId', isLoggedIn, profilesCtrl.delete)
+
 router.post('/sessions/:sessionId/exercises', isLoggedIn, profilesCtrl.createExercise)
 
 router.post('/sessions/:sessionId/exercises/:exerciseId/sets', isLoggedIn, profilesCtrl.createSet)
