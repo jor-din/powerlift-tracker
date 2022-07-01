@@ -91,6 +91,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left:5px;
 }
 
 #session-form {
@@ -101,11 +102,13 @@ button {
 
 #session-form h2 {
   color: #fdfdfd;
+  
 }
 
 #sets-name{
   color: #fdfdfd;
   font-size: 15px;
+  margin-left:5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -133,9 +136,14 @@ button {
   line-height: 20px;
 }
 
+#finished-btn{
+  color: #00AE84;
+}
+
 input{
   height: 20px;
   border-radius: 5px;
   border: none;
+  margin: 3px;
 }
 
